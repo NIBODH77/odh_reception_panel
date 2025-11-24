@@ -1,0 +1,33 @@
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$ alembic revision --autogenerate -m "Add Employee model"
+Traceback (most recent call last):
+  File "/usr/bin/alembic", line 33, in <module>
+    sys.exit(load_entry_point('alembic==1.13.1.dev0', 'console_scripts', 'alembic')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/alembic/config.py", line 641, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/usr/lib/python3/dist-packages/alembic/config.py", line 631, in main
+    self.run_cmd(cfg, options)
+  File "/usr/lib/python3/dist-packages/alembic/config.py", line 608, in run_cmd
+    fn(
+  File "/usr/lib/python3/dist-packages/alembic/command.py", line 236, in revision
+    script_directory.run_env()
+  File "/usr/lib/python3/dist-packages/alembic/script/base.py", line 583, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/usr/lib/python3/dist-packages/alembic/util/pyfiles.py", line 95, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/alembic/util/pyfiles.py", line 113, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/nibodh/Documents/odh_reception_panel/alembic/env.py", line 184, in <module>
+    from app.models import Base
+  File "/home/nibodh/Documents/odh_reception_panel/app/models.py", line 89, in <module>
+    from app.database import Base
+  File "/home/nibodh/Documents/odh_reception_panel/app/database.py", line 4, in <module>
+    from app.settings import settings
+  File "/home/nibodh/Documents/odh_reception_panel/app/settings.py", line 1, in <module>
+    from pydantic_settings import BaseSettings
+ModuleNotFoundError: No module named 'pydantic_settings'
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$ 
