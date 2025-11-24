@@ -45,3 +45,6 @@ pytz
 sqlalchemy
 uvicorn
 pydantic-settings
+pydantic-settings
+email-validator
+httpx
