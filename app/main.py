@@ -2710,9 +2710,50 @@ async def admin_employees_save(
     if redirect:
         return redirect
 
-    # For now, just redirect back to employees page
-    # TODO: Add Employee model and save logic
-    flash(request, f"Employee {full_name} saved successfully!", "success")
+    from app.models import Employee
+    
+    if employee_id == "new":
+        # Create new employee
+        new_employee = Employee(
+            full_name=full_name,
+            dob=dob,
+            gender=gender,
+            phone=phone,
+            email=email,
+            aadhaar_number=aadhaar_number,
+            pan_number=pan_number,
+            address=address,
+            emergency_name=emergency_name,
+            emergency_relation=emergency_relation,
+            emergency_phone=emergency_phone,
+            created_by=current_user.id
+        )
+        db.add(new_employee)
+        await db.commit()
+        flash(request, f"Employee {full_name} created successfully!", "success")
+    else:
+        # Update existing employee
+        result = await db.execute(select(Employee).where(Employee.id == int(employee_id)))
+        employee = result.scalar_one_or_none()
+        
+        if employee:
+            employee.full_name = full_name
+            employee.dob = dob
+            employee.gender = gender
+            employee.phone = phone
+            employee.email = email
+            employee.aadhaar_number = aadhaar_number
+            employee.pan_number = pan_number
+            employee.address = address
+            employee.emergency_name = emergency_name
+            employee.emergency_relation = emergency_relation
+            employee.emergency_phone = emergency_phone
+            
+            await db.commit()
+            flash(request, f"Employee {full_name} updated successfully!", "success")
+        else:
+            flash(request, "Employee not found!", "danger")
+    
     return RedirectResponse(url="/admin/employees", status_code=status.HTTP_303_SEE_OTHER)
 
 

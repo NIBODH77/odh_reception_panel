@@ -169,3 +169,26 @@ class OTP(Base):
     visitor = relationship("Visitor", backref="otps")
 
 
+class Employee(Base):
+    __tablename__ = "employees"
+
+    id = Column(Integer, primary_key=True, index=True)
+    full_name = Column(String, nullable=False)
+    dob = Column(String, nullable=True)
+    gender = Column(String, nullable=True)
+    phone = Column(String, nullable=True)
+    email = Column(String, nullable=True)
+    aadhaar_number = Column(String, nullable=True)
+    pan_number = Column(String, nullable=True)
+    address = Column(String, nullable=True)
+    emergency_name = Column(String, nullable=True)
+    emergency_relation = Column(String, nullable=True)
+    emergency_phone = Column(String, nullable=True)
+    
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
+    updated_at = Column(DateTime(timezone=True), onupdate=func.now())
+    
+    created_by = Column(Integer, ForeignKey("users.id"), nullable=True)
+    creator = relationship("User")
+
+
