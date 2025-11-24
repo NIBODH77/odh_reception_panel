@@ -214,12 +214,12 @@ if config.config_file_name and os.path.exists(config.config_file_name):
 
 sync_url=os.getenv("DATABASE_URL").replace("+asyncpg","")
 
-tartget_metadata = Base.metadata
+target_metadata = Base.metadata
 def run_migrations_offline() -> None:
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
         url=url,
-        target_metadata=tartget_metadata,
+        target_metadata=target_metadata,
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         compare_type=True,  # To detect column type changes
@@ -231,7 +231,7 @@ def run_migrations_offline() -> None:
 def do_run_migrations(connection: Connection) -> None:
     context.configure(
         connection=connection, 
-        target_metadata=tartget_metadata
+        target_metadata=target_metadata
     )
     with context.begin_transaction():
         context.run_migrations()
@@ -259,7 +259,7 @@ def run_migrations_online() -> None:
     with connectable.connect() as connection:
         context.configure(
             connection=connection, 
-            target_metadata=tartget_metadata,
+            target_metadata=target_metadata,
             compare_type=True,  # To detect column type changes
             compare_server_default=True
         )
