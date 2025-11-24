@@ -1,0 +1,45 @@
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$ alembic revision --autogenerate -m "Add Employee model"
+Traceback (most recent call last):
+  File "/usr/bin/alembic", line 33, in <module>
+    sys.exit(load_entry_point('alembic==1.13.1.dev0', 'console_scripts', 'alembic')())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/alembic/config.py", line 641, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/usr/lib/python3/dist-packages/alembic/config.py", line 631, in main
+    self.run_cmd(cfg, options)
+  File "/usr/lib/python3/dist-packages/alembic/config.py", line 608, in run_cmd
+    fn(
+  File "/usr/lib/python3/dist-packages/alembic/command.py", line 236, in revision
+    script_directory.run_env()
+  File "/usr/lib/python3/dist-packages/alembic/script/base.py", line 583, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/usr/lib/python3/dist-packages/alembic/util/pyfiles.py", line 95, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/alembic/util/pyfiles.py", line 113, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/nibodh/Documents/odh_reception_panel/alembic/env.py", line 184, in <module>
+    from app.models import Base
+  File "/home/nibodh/Documents/odh_reception_panel/app/models.py", line 89, in <module>
+    from app.database import Base
+  File "/home/nibodh/Documents/odh_reception_panel/app/database.py", line 14, in <module>
+    engine = create_async_engine(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/sqlalchemy/ext/asyncio/engine.py", line 43, in create_async_engine
+    sync_engine = _create_engine(*arg, **kw)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in create_engine
+  File "/usr/lib/python3/dist-packages/sqlalchemy/util/deprecations.py", line 375, in warned
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/sqlalchemy/engine/create.py", line 544, in create_engine
+    dbapi = dialect_cls.dbapi(**dbapi_args)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/sqlalchemy/dialects/postgresql/asyncpg.py", line 956, in dbapi
+    return AsyncAdapt_asyncpg_dbapi(__import__("asyncpg"))
+                                    ^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'asyncpg'
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$ 
