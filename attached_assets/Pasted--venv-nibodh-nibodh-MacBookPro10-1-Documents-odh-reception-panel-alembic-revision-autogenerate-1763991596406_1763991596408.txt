@@ -1,0 +1,29 @@
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$ alembic revision --autogenerate -m "Add Employee model"
+✅ Logging configured successfully
+Traceback (most recent call last):
+  File "/home/nibodh/Documents/odh_reception_panel/venv/bin/alembic", line 8, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/config.py", line 641, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/config.py", line 631, in main
+    self.run_cmd(cfg, options)
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/config.py", line 608, in run_cmd
+    fn(
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/command.py", line 236, in revision
+    script_directory.run_env()
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/script/base.py", line 583, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 95, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/nibodh/Documents/odh_reception_panel/venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 113, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/home/nibodh/Documents/odh_reception_panel/alembic/env.py", line 215, in <module>
+    sync_url=os.getenv("DATABASE_URL").replace("+asyncpg","")
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'replace'
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$ 
