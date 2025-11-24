@@ -211,7 +211,7 @@
   </div>
 </div>
 
-      
+
 
       <!-- User Info -->
       <div class="flex items-center space-x-2">
@@ -263,13 +263,18 @@
 
         <li>
           <a href="/receptionist/employees"
-            class="flex items-center p-3 rounded-lg {% if request.url.path.startswith('/receptionist/employees') %}bg-secondary text-white{% else %}text-dark hover:bg-secondary hover:text-white{% endif %}">
+            class="flex items-center p-3 rounded-lg {% if request.url.path == '/receptionist/employees' %}bg-secondary text-white{% else %}text-dark hover:bg-secondary hover:text-white{% endif %}">
             <i class="fas fa-user-tie w-5 text-center mr-2"></i> Employees
           </a>
         </li>
-        
 
-        
+        <li>
+          <a href="/receptionist/employees/edit"
+            class="flex items-center p-3 rounded-lg {% if request.url.path.startswith('/receptionist/employees/') and 'edit' in request.url.path %}bg-secondary text-white{% else %}text-dark hover:bg-secondary hover:text-white{% endif %}">
+            <i class="fas fa-user-edit w-5 text-center mr-2"></i> Edit Employee
+          </a>
+        </li>
+
         <li class="pt-4 border-t border-gray-200">
           <a href="/logout" class="flex items-center p-3 rounded-lg text-dark hover:bg-secondary hover:text-white">
             <i class="fas fa-sign-out-alt w-5 text-center mr-2"></i> Logout
@@ -282,7 +287,7 @@
     <main class="flex-1 p-4 lg:ml-0">
       <div class="container mx-auto">
         {% block content %}
-        
+
         {% endblock %}
       </div>
     </main>
@@ -295,7 +300,7 @@
 
 
   <!-- Scripts -->
-   
+
   <script>
     // Sidebar toggle
     const sidebar = document.getElementById('sidebar');
@@ -395,7 +400,7 @@
         }
       }
     };
-  
+
   </script> -->
 
 <!-- <script>
@@ -463,8 +468,7 @@
 </script> -->
 
 
-<!-- 
-<script>
+<!-- <script>
   const ws = new WebSocket(`ws://${window.location.host}/ws/receptionist`);
 
   const bell = document.getElementById("notification-bell");
@@ -493,7 +497,7 @@
 
 
 
-  
+
   ws.onmessage = (event) => {
     const popup = document.createElement("div");
     popup.className = "fixed top-20  right-6 bg-green-600 text-white px-5 py-4 rounded-lg shadow-lg flex justify-between items-center min-w-[70px] -translate-x-[395px] animate-slideIn";
@@ -1011,7 +1015,7 @@ body, #notification-box, #toast-container {
 
 
   {% block extra_js %}
-  
+
   {% endblock %}
 </body>
 

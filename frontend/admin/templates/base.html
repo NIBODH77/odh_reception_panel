@@ -211,6 +211,15 @@
                     </a>
                 </li>
 
+                <!-- Employee Edit -->
+                <li>
+                    <a href="/admin/employees/edit"
+                        class="flex items-center p-3 rounded-lg 
+       {% if request.url.path.startswith('/admin/employees/') and 'edit' in request.url.path %}bg-secondary text-white{% else %}text-dark hover:bg-secondary hover:text-white{% endif %}">
+                        <i class="fas fa-user-edit w-5 text-center mr-2"></i> Edit Employee
+                    </a>
+                </li>
+
                 <!-- User Management -->
                 <li>
                     <a href="/admin/users"

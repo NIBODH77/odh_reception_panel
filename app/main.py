@@ -2668,6 +2668,26 @@ async def admin_employees(
     )
 
 
+@app.get("/admin/employees/edit", response_class=HTMLResponse)
+async def admin_employees_edit(
+    request: Request,
+    db: AsyncSession = Depends(get_db),
+    access_token: Optional[str] = Cookie(None)
+):
+    current_user, redirect = await require_admin(request, db, access_token)
+    if redirect:
+        return redirect
+
+    return admin_templates.TemplateResponse(
+        "employee_edit.html",
+        {
+            "request": request,
+            "current_user": current_user,
+            "item": {}  # Add employee data here when needed
+        }
+    )
+
+
 @app.get("/receptionist/employees", response_class=HTMLResponse)
 async def receptionist_employees(
     request: Request,
