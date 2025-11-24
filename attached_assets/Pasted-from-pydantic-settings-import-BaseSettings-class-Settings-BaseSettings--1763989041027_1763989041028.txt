@@ -1,0 +1,70 @@
+from pydantic_settings import BaseSettings
+
+class Settings(BaseSettings):
+# ------------------------
+# Project Info
+# ------------------------
+PROJECT_NAME: str = "ODH Receptionist Panel"
+DEBUG: bool = True
+
+# ------------------------
+# Database
+# ------------------------
+DATABASE_URL: str = "sqlite+aiosqlite:///./receptionist.db"
+# ------------------------
+# SMS Gateway (smsgateway.center)
+# ------------------------
+SMSGW_BASE_URL: str = "https://unify.smsgateway.center/SMSApi/send"
+SMSGW_USERID: str = "vprlst"
+SMSGW_PASSWORD: str = "Odh@87612"
+SMSGW_SENDERID: str = "ODHGRP"
+# ------------------------
+# DLT IDs
+# ------------------------
+DLT_ENTITY_ID: str | None = "3686"
+DLT_TEMPLATE_ID_OTP: str | None = "1707175239899941851"
+# ------------------------
+# Security
+# ------------------------
+SECRET_KEY: str = "logan"  # ⚠️ production में env से लीजिए
+ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+class Config:
+    env_file = ".env"   # load values from .env
+    case_sensitive = True
+ek global object
+settings = Settings()
+
+dependency injection ke liye function
+def get_settings() -> Settings:
+return settings
+
+aur ye error hai fix karo jis se migration kr sake 
+ util.load_python_file(self.dir, "env.py")
+File "/usr/lib/python3/dist-packages/alembic/util/pyfiles.py", line 95, in load_python_file
+module = load_module_py(module_id, path)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "/usr/lib/python3/dist-packages/alembic/util/pyfiles.py", line 113, in load_module_py
+spec.loader.exec_module(module) # type: ignore
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+File "/home/nibodh/Documents/odh_reception_panel/alembic/env.py", line 184, in <module>
+from app.models import Base
+File "/home/nibodh/Documents/odh_reception_panel/app/models.py", line 89, in <module>
+from app.database import Base
+File "/home/nibodh/Documents/odh_reception_panel/app/database.py", line 4, in <module>
+from app.settings import settings
+File "/home/nibodh/Documents/odh_reception_panel/app/settings.py", line 1, in <module>
+from pydantic_settings import BaseSettings
+ModuleNotFoundError: No module named 'pydantic_settings'
+(venv) nibodh@nibodh-MacBookPro10-1:~/Documents/odh_reception_panel$
+
+JI
+
+kukuji1995
+
+Scroll to latest
+Assistant mode
+
+advanced
+Claude 4.5 Sonnet
